@@ -1,0 +1,41 @@
+# Vai trò task: WinoGrande: chọn một trong hai phương án để giải quyết chỗ trống/tham chiếu trong câu.
+task: tinyWinogrande_gen
+# Nguồn dataset trên Hugging Face; các split phía dưới xác định tập dùng chấm và ví dụ.
+dataset_path: tinyBenchmarks/tinyWinogrande
+dataset_name: winogrande_xl
+validation_split: validation
+# Số ví dụ mẫu đưa vào prompt trước câu hỏi đang chấm; 0 nghĩa là zero-shot.
+num_fewshot: 0
+# generate_until yêu cầu model sinh văn bản rồi dừng theo generation_kwargs.
+output_type: generate_until
+# Chuyển một hàng dataset thành prompt; !function gọi hàm Python, chuỗi còn lại là template Jinja.
+doc_to_text: !function utils.winogrande_doc_to_text
+# Trích đáp án chuẩn của hàng dataset để so sánh với response.
+doc_to_target: "{{answer}}"
+# Quy tắc dừng và sampling của generation; các task trắc nghiệm chỉ cần output đáp án ngắn.
+generation_kwargs:
+  until:
+    - "\n"
+    - "</s>"
+    - "<|im_end|>"
+    - "<|eot_id|>"
+  do_sample: false
+  temperature: 0.0
+  max_gen_toks: 5
+# Metric và cách gộp điểm qua các mẫu; điểm cao hơn biểu thị kết quả tốt hơn.
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+# Lấy đáp án bằng regex từ response rồi chọn kết quả đầu tiên trước khi chấm.
+filter_list:
+  - name: default
+    filter:
+      - function: regex
+        regex_pattern: "([12])"
+      - function: take_first
+# Phiên bản cấu hình task để truy vết thay đổi thiết lập benchmark.
+metadata:
+  version: 1.0

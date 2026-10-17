@@ -1,0 +1,36 @@
+# Vai trò task: GSM8K: bài toán lời văn, dùng 5 ví dụ few-shot và math_verify so sánh đáp án toán học.
+task: tinyGSM8k_gen
+# Nguồn dataset trên Hugging Face; các split phía dưới xác định tập dùng chấm và ví dụ.
+dataset_path: tinyBenchmarks/tinyGSM8k
+dataset_name: main
+# generate_until yêu cầu model sinh văn bản rồi dừng theo generation_kwargs.
+output_type: generate_until
+training_split: train
+fewshot_split: train
+test_split: test
+# Số ví dụ mẫu đưa vào prompt trước câu hỏi đang chấm; 0 nghĩa là zero-shot.
+num_fewshot: 5
+# Chuyển một hàng dataset thành prompt; !function gọi hàm Python, chuỗi còn lại là template Jinja.
+doc_to_text: "Question: {{question}}\nAnswer:"
+# Trích đáp án chuẩn của hàng dataset để so sánh với response.
+doc_to_target: "{{answer}}"
+# Chấm response bằng hàm Python tùy chỉnh thay cho exact-match văn bản.
+process_results: !function utils.gsm8k_process_results
+# Metric và cách gộp điểm qua các mẫu; điểm cao hơn biểu thị kết quả tốt hơn.
+metric_list:
+  - metric: math_verify
+    aggregation: mean
+    higher_is_better: true
+# Quy tắc dừng và sampling của generation; các task trắc nghiệm chỉ cần output đáp án ngắn.
+generation_kwargs:
+  until:
+    - "Question:"
+    - "</s>"
+    - "<|im_end|>"
+    - "<|eot_id|>"
+  do_sample: false
+  temperature: 0.0
+repeats: 1
+# Phiên bản cấu hình task để truy vết thay đổi thiết lập benchmark.
+metadata:
+  version: 1.0

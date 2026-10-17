@@ -1,0 +1,42 @@
+# Môi trường được pin để tái lập thí nghiệm; khi chuyển notebook cần kiểm tra tương thích Python/CUDA.
+# Main experiments and dataset generation (Python 3.10)
+# Phân bố model lên thiết bị và hỗ trợ device_map/max_memory khi nạp model.
+accelerate==1.7.0
+# Nạp dataset Hugging Face và áp dụng tiền xử lý các task.
+datasets==3.6.0
+# Tạo HTTP endpoint generation local cho TinyBench.
+fastapi==0.116.1
+# Tải model/dataset và upload TraitFactory khi có yêu cầu.
+huggingface-hub==0.34.4
+# Parse và kiểm tra tính tương đương đáp án toán trong GSM8K.
+math-verify
+# Xử lý ma trận activation, xác suất và seed lấy mẫu.
+numpy==1.26.4
+# API client cho sinh TraitFactory/contrastive và chấm coherence/thuộc tính.
+openai==1.70.0
+# Đọc/ghi CSV response, calibration và tổng hợp điểm.
+pandas==2.3.1
+# Schema dữ liệu API để đọc question batch và request endpoint.
+pydantic==2.11.7
+# Nạp biến môi trường từ .env cho script sinh dữ liệu.
+python-dotenv==1.1.1
+# Đọc cấu hình YAML trong hệ sinh thái task benchmark.
+PyYAML==6.0.2
+# Chia dữ liệu classifier thành các phần train/eval có phân tầng nhãn.
+scikit-learn==1.7.2
+# Hỗ trợ các tokenizer cần SentencePiece.
+sentencepiece==0.2.0
+# Chạy LLM, tensor activation, PCA/SVD, classifier và autograd steering.
+torch==2.6.0
+# Hiển thị tiến độ extraction, generation và judging.
+tqdm==4.67.1
+# Nạp causal LM/tokenizer và thực hiện generation/hidden-state extraction.
+transformers==4.52.3
+# Chạy server FastAPI phục vụ request của lm-eval.
+uvicorn==0.35.0
+
+# TinyBench only
+# Công cụ chạy các task TinyBench và tính metric.
+lm-eval==0.4.11
+# Thư viện retry đi kèm môi trường chạy TinyBench.
+tenacity==9.1.4

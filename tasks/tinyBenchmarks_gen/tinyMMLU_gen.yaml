@@ -1,0 +1,41 @@
+# Vai trò task: MMLU: câu hỏi kiến thức đa lĩnh vực với 4 lựa chọn, đánh giá zero-shot.
+task: tinyMMLU_gen
+# Nguồn dataset trên Hugging Face; các split phía dưới xác định tập dùng chấm và ví dụ.
+dataset_path: tinyBenchmarks/tinyMMLU
+dataset_name: all
+test_split: test
+# Số ví dụ mẫu đưa vào prompt trước câu hỏi đang chấm; 0 nghĩa là zero-shot.
+num_fewshot: 0
+# generate_until yêu cầu model sinh văn bản rồi dừng theo generation_kwargs.
+output_type: generate_until
+# Chuyển một hàng dataset thành prompt; !function gọi hàm Python, chuỗi còn lại là template Jinja.
+doc_to_text: "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer with just the letter:"
+# Trích đáp án chuẩn của hàng dataset để so sánh với response.
+doc_to_target: "{{['A','B','C','D'][answer]}}"
+# Quy tắc dừng và sampling của generation; các task trắc nghiệm chỉ cần output đáp án ngắn.
+generation_kwargs:
+  until:
+    - "\n"
+    - "</s>"
+    - "<|im_end|>"
+    - "<|eot_id|>"
+  do_sample: false
+  temperature: 0.0
+  max_gen_toks: 5
+# Metric và cách gộp điểm qua các mẫu; điểm cao hơn biểu thị kết quả tốt hơn.
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+# Lấy đáp án bằng regex từ response rồi chọn kết quả đầu tiên trước khi chấm.
+filter_list:
+  - name: default
+    filter:
+      - function: regex
+        regex_pattern: "(?<![a-zA-Z])([ABCD])(?![a-zA-Z])"
+      - function: take_first
+# Phiên bản cấu hình task để truy vết thay đổi thiết lập benchmark.
+metadata:
+  version: 1.0

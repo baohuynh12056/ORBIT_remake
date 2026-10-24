@@ -1,0 +1,14 @@
+{
+  "fp16": {
+    "precision": "fp16",
+    "judge_precision": "fp16"
+  },
+  "judge_nf4": {
+    "precision": "fp16",
+    "judge_precision": "nf4"
+  },
+  "low_memory_nf4": {
+    "precision": "nf4",
+    "judge_precision": "nf4"
+  }
+}

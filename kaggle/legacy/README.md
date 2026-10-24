@@ -1,0 +1,1 @@
+Archive của workflow repo trước thay đổi paper: 7 notebooks, judge lọc POS/NEG, extraction riêng. Không dùng checkpoint cũ với workflow paper mới. Giải nén bundle này riêng nếu cần tiếp tục run cũ; không trộn module/config hai phiên bản.

@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "mode": "pilot",
+  "target_model_id": "meta-llama/Llama-3.2-3B-Instruct",
+  "revisions": {
+    "meta-llama/Llama-3.2-3B-Instruct": "0cb88a4f764b7a12671c53f0838cd831a0843b95",
+    "Qwen/Qwen2.5-7B-Instruct": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "meta-llama/Llama-3.1-8B-Instruct": "0e9e39f249a16976918f6564b8830bc894c89659",
+    "Qwen/Qwen3.5-9B": "c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+  },
+  "dataset": {
+    "id": "withmartian/tone_agnostic_questions",
+    "revision": "c789fd10483cb6a2bb3703234d56168ce468cb93"
+  },
+  "labels": [
+    "expert",
+    "cautious",
+    "empathetic",
+    "casual",
+    "concise"
+  ],
+  "methods": [
+    "Unsteered",
+    "CAA",
+    "K-Steer",
+    "ORBIT"
+  ],
+  "k_values": [
+    1,
+    2,
+    3
+  ],
+  "seed": 42,
+  "precision": "fp16",
+  "hardware": {
+    "reserve_gib_per_gpu": 2.0
+  },
+  "split": {
+    "mode": "question_holdout",
+    "seed": 42,
+    "max_questions": 60,
+    "train_fraction": 0.25,
+    "calibration_samples": 6
+  },
+  "build": {
+    "response_source": "backbone",
+    "negative_seed": 0,
+    "max_pairs": 30,
+    "max_new_tokens": 96,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "filter_policy": "none",
+    "prompt_role": "system",
+    "extraction": "generation_prefill",
+    "feature_replay_batch_size": 2
+  },
+  "steering": {
+    "layer": -6,
+    "eval_layer": -1,
+    "orbit_plane": "global",
+    "orbit_token": "prompt_last",
+    "orbit_positions": "response",
+    "orbit_gate": "zero_margin",
+    "orbit_rotation": "full_alignment",
+    "orbit_boost_fill_fraction": 0.4
+  },
+  "classifier": {
+    "hidden_dim": 128,
+    "epochs": 5,
+    "batch_size": 32,
+    "lr": 0.001,
+    "device": "cpu",
+    "dtype": "float32",
+    "shuffle": "stateless_numpy_epoch"
+  },
+  "calibration": {
+    "alpha_range": [
+      1.0,
+      32.0
+    ],
+    "boost_range": [
+      0.0,
+      3.0
+    ],
+    "iterations": 3,
+    "max_new_tokens": 50,
+    "coherence_threshold": 50,
+    "max_bad_percent": 5.0,
+    "technical_error_policy": "stop"
+  },
+  "generation": {
+    "n_questions": 6,
+    "max_new_tokens": 192,
+    "repeats": 1,
+    "batch_size": 1,
+    "do_sample": false
+  },
+  "judge": {
+    "model_id": "Qwen/Qwen3.5-9B",
+    "precision": "fp16",
+    "thinking": false,
+    "max_new_tokens": 1024,
+    "max_attempts": 3,
+    "do_sample": false,
+    "rubric_version": "source-v1-strict-scale"
+  },
+  "report": {
+    "judge_types": [
+      "target",
+      "detailed"
+    ],
+    "tone_comparison": true,
+    "success_coherence_threshold": 50,
+    "bootstrap_draws": 2000
+  },
+  "protocol": {
+    "name": "paper_unfiltered_inline_v1",
+    "reference": "ORBIT 2606.22357v1 Appendix C.1",
+    "differences": [
+      "Qwen3.5 local evaluator replaces OpenAI",
+      "CAA/classifier features retain repo raw prompt-response last token",
+      "split is explicit; question_holdout differs from shared_pool",
+      "T4 FP16; classifier CPU float32"
+    ]
+  }
+}

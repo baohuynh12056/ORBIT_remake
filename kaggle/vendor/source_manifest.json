@@ -1,0 +1,27 @@
+{
+  "commit": "f37328e6a60f9becf7ca2c31b0abf7b5ec7cc535",
+  "sha256": {
+    "angular_residual_utils.py": "13b00e22dfc6655a17d521d2be2fec82d3b4fddf702d2608b8d07cad80cfa341",
+    "angular_steering_utils.py": "b905227ba97e321aa9e80323d4a671b107668087380980fe95b7295c2fb6c63d",
+    "ksteering/src/steering/models.py": "64bb57d21dd8cbc9339c6e7c7ba7fb52bfdd3b87221833437fb7ea6d7ea8a423",
+    "ksteering/src/steering/eval.py": "c174486076576112d3208655efd1e326e0b99fb121cd8dc316f7a191a6918975",
+    "ksteering/src/steering/hooks.py": "004d21e4563f68eb365dcaccfe90d63a151bf99b4cf80481019e2e8ec49d0d60",
+    "ksteering/src/steering/__init__.py": "ba70e60cccb3c9e2721ce29d14945f222e8a0cad133ac7187d0890454f7136e4",
+    "ksteering/src/utils/generation.py": "40b4becfa8eca4654bf160593588dff18ccc64f02b96270ebadc36d427fec14f",
+    "ksteering/src/utils/tasks.py": "69d8903a3ef891ff89b03380d3769977901236699844a6fd6d49582796e28b08",
+    "ksteering/src/utils/features.py": "ad45022b05deda2146d0ffe16e2bc0ff911ff92650a8901f0d89c708d420d70a",
+    "ksteering/src/utils/data.py": "7f3817ae896aac46a4152e08704871751615a9e2034f7d659bb0ff695aeeeb9c",
+    "ksteering/src/utils/__init__.py": "b7d8690440aecc42072f0a7c10c9683c485bfb58131798eef3d6321bfab0e457",
+    "ksteering/src/__init__.py": "71b7dbe2fb4b710e56631b62b40643c1cfa0039ee03158d25f34079204a92371",
+    "ksteering/LICENSE": "75570e8efc3b91ab95937a5857cbd53069aeac11162f1665960779dec984f5f5",
+    "scripts/run_main_experiment.py": "32a71919291e8780b735b88f5aee152a5ebf00138fd80a3b295c3af6108a7247",
+    "scripts/run_experiment_pipeline.py": "4f7d3a04d48d1e19c6c937704d2a0dac7bc5711263abfbe5726b9c7fc3c897ec",
+    "scripts/judge_responses.py": "c633d9b2b78a04c0f6c529912e9f977f0969a34c086d32600a422ca6abaad0ee",
+    "ksteering/src/judges/tone_judge.py": "4f721cff2ffd4c1c9dadfc554708baa2b7ee91416cf9deb2048a055300a80e5e",
+    "README.md": "f9be390227f37561170e4ca61feec5170926bc2d8b4195e3390d4c2543da134c",
+    "docs/VECTOR_AND_DATA_BUILD.md": "0cc3c3420306d1ad78360dbbb3d57c52eea94c498c2056b468801882c59cb7e1",
+    "data/README.md": "223e203c85dfd4b6e90356604004f4670cb9db4c1dd63330a70f87c8c6588530"
+  },
+  "prompt_extraction": "AST selected pure definitions; TonePrompt excludes network client",
+  "generated_prompt_sha256": "896cd16e7d51753fc94f0433d4a9994a8eb2f501d0cd675d773612a02471013d"
+}

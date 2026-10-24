@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-23",
+  "workflow": "paper_unfiltered_inline_v1",
+  "python": "3.12.3",
+  "versions": {
+    "torch": "2.6.0+cpu",
+    "torchvision": "0.21.0+cpu",
+    "transformers": "5.20.1",
+    "numpy": "1.26.4",
+    "scikit-learn": "1.7.2",
+    "accelerate": "1.12.0",
+    "nbformat": "5.10.4"
+  },
+  "tests": {
+    "command": "PYTHONPATH=kaggle /tmp/orbit-paper-cpu/bin/python -m unittest discover -s kaggle/tests -v",
+    "count": 41,
+    "result": "passed"
+  },
+  "cuda_available_in_cpu_env": false,
+  "pretrained_weights_loaded": false,
+  "t4_experiments_executed": false,
+  "tiny_model_tests": [
+    "Llama/Qwen prefill norm parity with source system_prompt collect",
+    "raw CAA/classifier replay parity",
+    "mid-pair/pair resume",
+    "hook cleanup",
+    "unfiltered CPU artifacts",
+    "total notebook budget"
+  ],
+  "implementation": {
+    "models.py": "17f48e6c9ced348237351ae8a0f2896e5d2ff2036580d63a48622c6f57c8d022",
+    "artifacts.py": "8a2dc83b1a90ae5ee76d6a45fe7a0807be2003e83312ded50cff159a483b5ffc",
+    "fused_build.py": "c03973cf42d750201a42f385a0c7a3ddbfc3918835763410c6b2f528663dabb4",
+    "stages.py": "479ff575cbce8522e34f48d71e20b5a731ea9ec5ab24d3d8e2f4389649dd733b",
+    "config.py": "4e22e8cb91d8bfe8c7f081dcc8a9143d8c9fa30c3b21ec96af1e43ccc6e66d15",
+    "report.py": "02438c61556aa4ddc18bb5abe6df4a3691f6cdf85c5c4f1a02eff30dc3d10957",
+    "verify.py": "d97d4850928f370c177adee53b8295165bc68465b81ce4e6c2fc611ed58769ae"
+  }
+}

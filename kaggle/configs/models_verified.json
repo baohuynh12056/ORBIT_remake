@@ -1,0 +1,33 @@
+{
+  "https://pypi.org/pypi/transformers/json": {
+    "version": "5.20.1"
+  },
+  "https://api.github.com/repos/huggingface/transformers/commits/main": {
+    "sha": "5b20befc1c565c1f46ba9659993b352d42ef146e"
+  },
+  "https://huggingface.co/api/models/Qwen/Qwen3.5-9B": {
+    "sha": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+    "gated": false,
+    "id": "Qwen/Qwen3.5-9B"
+  },
+  "https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct": {
+    "sha": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "gated": false,
+    "id": "Qwen/Qwen2.5-7B-Instruct"
+  },
+  "https://huggingface.co/api/models/meta-llama/Llama-3.2-3B-Instruct": {
+    "sha": "0cb88a4f764b7a12671c53f0838cd831a0843b95",
+    "gated": "manual",
+    "id": "meta-llama/Llama-3.2-3B-Instruct"
+  },
+  "https://huggingface.co/api/models/meta-llama/Llama-3.1-8B-Instruct": {
+    "sha": "0e9e39f249a16976918f6564b8830bc894c89659",
+    "gated": "manual",
+    "id": "meta-llama/Llama-3.1-8B-Instruct"
+  },
+  "https://huggingface.co/api/datasets/withmartian/tone_agnostic_questions": {
+    "sha": "c789fd10483cb6a2bb3703234d56168ce468cb93",
+    "gated": false,
+    "id": "withmartian/tone_agnostic_questions"
+  }
+}

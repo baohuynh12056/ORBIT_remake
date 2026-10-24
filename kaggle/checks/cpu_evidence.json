@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-19",
+  "python": "3.12.3",
+  "torch": "2.6.0+cpu",
+  "torch_cuda": null,
+  "cuda_available": false,
+  "cuda_device_count": 0,
+  "transformers": "5.20.1",
+  "dataset_revision": "c789fd10483cb6a2bb3703234d56168ce468cb93",
+  "dataset_hf_fingerprint": "35bfb384b456a7e9",
+  "dataset_content_fingerprint": "452201cafb27df646f4bce8b006218a106286b273cd7a13ef2377740bf55619e",
+  "schema": "{'id': Value('string'), 'text': Value('string'), 'category': Value('string')}",
+  "rows": 1184,
+  "duplicates": [
+    {
+      "indices": [
+        108,
+        421
+      ],
+      "question_id": "tb-4020cc6b1523afeee36800de"
+    },
+    {
+      "indices": [
+        162,
+        1173
+      ],
+      "question_id": "tb-4db726e908f906481ce7a54f"
+    }
+  ],
+  "full_question_holdout_counts": {
+    "train": 50,
+    "calibration": 75,
+    "test": 16,
+    "selected": 200
+  },
+  "qwen_processor": {
+    "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+    "architecture": [
+      "Qwen3_5ForConditionalGeneration"
+    ],
+    "auto_mapping": "Qwen3_5ForConditionalGeneration",
+    "thinking_template_cpu_checked": true
+  },
+  "experimental_gpu_results": null
+}
